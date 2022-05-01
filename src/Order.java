@@ -1,8 +1,10 @@
 
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.lang.Long.parseLong;
 
@@ -15,8 +17,27 @@ public class Order {
 
     private long customrId;
 
-    public Order(String orderInfo)  {
-        //To Do
+    //Builder with parameter of order details. We converted the dates from string to date.
+    public Order(String orderInfo) {
+        List<String> o= Stream.of(orderInfo.split(" ")).collect(Collectors.toList());
+        orderId= Long.parseLong(o.get(1));
+        SimpleDateFormat formatter1=new SimpleDateFormat("dd/MM/yyyy");
+        Date OrderDate= null;
+        try {
+            OrderDate = formatter1.parse(o.get(4));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        orderDate= OrderDate;
+        Date DeliveryDate= null;
+        try {
+            DeliveryDate = formatter1.parse(o.get(7));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        deliveryDate= DeliveryDate;
+        status = OrderStatus.valueOf(o.get(9));
+        customrId= Long.parseLong(o.get(12));
     }
 
     public Order(long Oid, Date OorderDate, Date OdeliveryDate, OrderStatus Ostatus, long OcustomrId)

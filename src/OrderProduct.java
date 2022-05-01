@@ -1,5 +1,9 @@
 
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import static java.lang.Long.parseLong;
 
 public class OrderProduct {
@@ -7,9 +11,14 @@ public class OrderProduct {
     private long productId;
     private int quantity;
 
+    //constructor that gets a string with the orderInfo then splits the
+    //text into an array and places the appropriate values into the appropriate fields
     public OrderProduct(String orderInfo)
     {
-        //To Do
+        List<String> op= Stream.of(orderInfo.split(" ")).collect(Collectors.toList());
+        orderId = Long.parseLong(op.get(1));
+        productId = Long.parseLong(op.get(5));
+        quantity = Integer.parseInt(op.get(7));
     }
 
     public OrderProduct(long oId, long pId, int quantity)
