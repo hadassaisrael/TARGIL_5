@@ -14,7 +14,7 @@ public class DataSource {
     public static List<Product> allProducts;
     public static List<OrderProduct> allOrderProducts;
     // Update this path according to your data files location
-    public static String basePath = "";
+    public static String basePath = "C:\\Users\\USER\\IdeaProjects\\TARGIL_5\\src\\";
     public static String customersPath = basePath +"customers.txt";
     public static String ordersPath = basePath +"orders.txt";
     public static String productsPath = basePath +"products.txt";

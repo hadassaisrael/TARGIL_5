@@ -16,7 +16,7 @@ public class OrderProduct {
     public OrderProduct(String orderInfo)
     {
         List<String> op= Stream.of(orderInfo.split(" ")).collect(Collectors.toList());
-        orderId = Long.parseLong(op.get(1));
+        orderId = Long.parseLong(op.get(2));
         productId = Long.parseLong(op.get(5));
         quantity = Integer.parseInt(op.get(7));
     }
